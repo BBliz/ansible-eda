@@ -7,18 +7,21 @@
        port: 9092
        topic: networks
   rules:
-   - name: Test
-     condition: event.body.fields.admin_status == "DOWN"
-     action:
-       run_job_template:
-         organization: "Default"
-         name: "Hello EDA"
-         post_events: true
-         job_args:
-           extra_vars:
-             limit: ansible_eda.event.body.tags.source
-             
     - name: Debug Kafka
       condition: event.body.fields is defined
       action:
-        debug:
+         debug:
+           var: event.body.fields
+           
+    - name: Test
+      condition: event.body.fields.admin_status == "DOWN"
+      action:
+        run_job_template:
+          organization: "Default"
+          name: "Hello EDA"
+          post_events: true
+          job_args:
+            extra_vars:
+              limit: ansible_eda.event.body.tags.source
+
+
