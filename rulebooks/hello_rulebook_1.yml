@@ -17,6 +17,9 @@
           job_args:
             extra_vars:
               limit: ansible_eda.event.body.tags.source
+
+    - name: Debug Interface
+      condition: event.body.fields.admin_status == "UP"
+      action:
         debug:
           var: event.body.fields
-
