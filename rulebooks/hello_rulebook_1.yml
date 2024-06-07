@@ -6,13 +6,7 @@
        host: 3.141.230.190
        port: 9092
        topic: networks
-  rules:
-    - name: Debug Kafka
-      condition: event.body.fields.admin_status == "DOWN"
-      action:
-         debug:
-           var: event.body.fields
-           
+  rules:           
     - name: Test
       condition: event.body.fields.admin_status == "DOWN"
       action:
@@ -23,5 +17,6 @@
           job_args:
             extra_vars:
               limit: ansible_eda.event.body.tags.source
-
+         debug:
+           var: event.body.fields
 
