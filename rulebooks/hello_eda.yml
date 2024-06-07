@@ -17,3 +17,9 @@
          job_args:
            extra_vars:
              limit: ansible_eda.event.body.tags.source
+    - name: Debug Kafka
+      condition: event.body.fields.admin_status == "UP"
+      action:
+        debug:
+          msg: "{{ event.body.fields }}"
+         
