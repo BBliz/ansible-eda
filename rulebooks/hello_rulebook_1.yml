@@ -8,7 +8,7 @@
        topic: networks
   rules:
     - name: Debug Kafka
-      condition: event.body.fields is defined
+      condition: event.body.fields.admin_status == "DOWN"
       action:
          debug:
            var: event.body.fields
