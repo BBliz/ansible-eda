@@ -1,0 +1,9 @@
+---
+- name: DEBUG Playbook
+  hosts: "{{ ansible_eda.event.body.tags.source }}"
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: DEBUG 'event.body.fields'
+      debug:
+        var: event.body.fields
