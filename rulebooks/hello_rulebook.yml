@@ -7,19 +7,16 @@
        port: 9092
        topic: networks
   rules:           
-    - name: Test
+    - name: Run 'hello_eda.yml' To Bring Up Interface
       condition: event.body.fields.admin_status == "DOWN"
       action:
-        run_job_template:
-          organization: "Default"
-          name: "Hello EDA"
+        run_playbook:
+          name: "hello_eda.yml"
           post_events: true
-          job_args:
-            extra_vars:
-              limit: ansible_eda.event.body.tags.source
-
-    - name: Debug Interface
+          extra_vars:
+            limit: ansible_eda.event.body.tags.source
+    - name: Run 'hello_debug.yml' To Debug 'event.body.fields'
       condition: event.body.fields.admin_status == "UP"
       action:
-        debug:
-          var: event.body.fields
+        run_playbook:
+          name: "hello_debug.yml"
