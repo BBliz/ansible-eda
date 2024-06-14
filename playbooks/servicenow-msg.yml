@@ -3,4 +3,4 @@
   hosts: all
   tasks:
     - name: Print Message
-      shell: "{{ message }}"
+      shell: echo "{{ message }}"
