@@ -1,0 +1,11 @@
+- name: Update Interaface Status
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: Update "{{ interface_name }}" Description
+      arista.eos.eos_interfaces:
+        config:
+        - name: "{{ interface_name }}"
+          description: "{{ interface_description }}"
+      when: "device_os == 'eos'"
