@@ -1,0 +1,12 @@
+- name: Update Interaface Status
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: Admins up Arista interface
+      arista.eos.eos_interfaces:
+        config:
+        - name: "{{ interface_name }}"
+          enabled: "{{ interface_status }}"
+          enabled: true
+      when: "device_os == 'eos'"
