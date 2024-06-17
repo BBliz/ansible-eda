@@ -8,5 +8,4 @@
         config:
         - name: "{{ interface_name }}"
           enabled: "{{ interface_status }}"
-          enabled: true
       when: "device_os == 'eos'"
