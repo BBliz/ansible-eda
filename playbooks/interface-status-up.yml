@@ -19,7 +19,4 @@
           enabled: true
       when: "device_os == 'nxos'"
 
-    - name: Show Interface Status
-      debug:
-        msg: "Interface {{ ansible_eda.event.body.name }} is {{ ansible_eda.event.body.fields }}"
 ...
