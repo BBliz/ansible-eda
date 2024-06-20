@@ -4,6 +4,6 @@
   gather_facts: false
   connection: network_cli
   tasks:
-    - name: DEBUG 'event.body.fields'
+    - name: Show Interface Status
       debug:
-        var: ansible_eda.event.body.fields
+        msg: "Interface {{ ansible_eda.event.body.name }} is {{ ansible_eda.event.body.fields }}"
