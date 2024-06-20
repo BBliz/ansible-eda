@@ -22,7 +22,7 @@
       action:
         run_job_template:
           organization: "Default"
-          name: "Debug - event.body.fields"
+          name: "Interface Status"
           post_events: true
           job_args:
             extra_vars:
